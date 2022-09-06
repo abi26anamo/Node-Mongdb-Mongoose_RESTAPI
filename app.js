@@ -5,6 +5,7 @@ var session = require('express-session');
 var FileStore = require('session-file-store');
 var passport = require('passport');
 var authenticate = require('./authenticate');
+var config = require('./config');
 // var cookieParser = require('cookie-parser');
 app.use(session({
   name :'session-id',
@@ -29,7 +30,7 @@ mongoose.Promise = require('bluebird');
 const Dishes = require('./models/dishes');
 
 
-const url = 'mongodb://localhost:27017/conFusion';
+const url =config.mongoUrl;
 const connect = mongoose.connect(url, {
     useMongoClient: true,
   });
